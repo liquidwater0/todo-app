@@ -3,7 +3,7 @@ import "./scss/App.scss";
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
-import check from "./assets/icon-check.svg";
+import checkIcon from "./assets/icon-check.svg";
 
 import Attribution from './components/Attribution';
 
@@ -117,7 +117,7 @@ function App() {
 							<button type="button" onClick={toggleTheme}>
 								<img 
 									src={theme === "dark" ? sunIcon : moonIcon} 
-									alt="theme-icon" 
+									alt="theme changer icon" 
 								/>
 							</button>
 						</div>
@@ -131,7 +131,10 @@ function App() {
 							{renderedTodos.map(({ label, completed, id }) => 
 								<li key={id} onClick={() => toggleTodo(id)} style={{backgroundColor: completed ? "red" : "", cursor: "pointer"}}>
 									<div className="todo-item">
-										<div className={`todo-status ${completed ? "complete" : "not-complete"}`}/>
+										<div className={`todo-status ${completed ? "complete" : ""}`}>
+											{ completed && <img src={checkIcon} alt="check icon" /> }
+										</div>
+
 										<p className='todo-item-label'>{ label }</p>
 									</div>
 								</li>
