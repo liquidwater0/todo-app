@@ -11,7 +11,6 @@ export default function TodoItem({ todo, toggleTodo }: TodoItemProps) {
 
     return (
         <li 
-            key={id} 
             onClick={() => toggleTodo(id)} 
             data-completed={completed}
         >
