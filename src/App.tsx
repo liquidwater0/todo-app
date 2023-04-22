@@ -129,7 +129,12 @@ function App() {
 					<div className="todo-body">
 						<ul className='todo-list'>
 							{renderedTodos.map(({ label, completed, id }) => 
-								<li key={id} onClick={() => toggleTodo(id)} style={{backgroundColor: completed ? "red" : "", cursor: "pointer"}}>
+								<li 
+									key={id} 
+									onClick={() => toggleTodo(id)} 
+									data-completed={completed}
+									style={{backgroundColor: completed ? "red" : "", cursor: "pointer"}}
+								>
 									<div className="todo-item">
 										<div className={`todo-status ${completed ? "complete" : ""}`}>
 											{ completed && <img src={checkIcon} alt="check icon" /> }
