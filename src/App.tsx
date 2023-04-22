@@ -114,7 +114,11 @@ function App() {
 					<header className="todo-header">
 						<div>
 							<h1>TODO</h1>
-							<button type="button" onClick={toggleTheme}>
+							<button 
+								className='theme-changer-button'
+								type="button" 
+								onClick={toggleTheme}
+							>
 								<img 
 									src={theme === "dark" ? sunIcon : moonIcon} 
 									alt="theme changer icon" 
