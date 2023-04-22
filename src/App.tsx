@@ -3,8 +3,8 @@ import "./scss/App.scss";
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
-import checkIcon from "./assets/icon-check.svg";
 
+import TodoItem from './components/TodoItem';
 import Attribution from './components/Attribution';
 
 /*
@@ -12,7 +12,7 @@ import Attribution from './components/Attribution';
 	style
 */
 
-type Todo = {
+export type Todo = {
 	label: string,
 	completed: boolean,
 	id: string
@@ -132,20 +132,12 @@ function App() {
 
 					<div className="todo-body">
 						<ul className='todo-list'>
-							{renderedTodos.map(({ label, completed, id }) => 
-								<li 
-									key={id} 
-									onClick={() => toggleTodo(id)} 
-									data-completed={completed}
-								>
-									<div className="todo-item">
-										<div className={`todo-status ${completed ? "complete" : ""}`}>
-											{ completed && <img src={checkIcon} alt="check icon" /> }
-										</div>
-
-										<p className='todo-item-label'>{ label }</p>
-									</div>
-								</li>
+							{renderedTodos.map(todo => 
+								<TodoItem 
+									key={todo.id} 
+									todo={todo} 
+									toggleTodo={toggleTodo}
+								/>
 							)}
 						</ul>
 
