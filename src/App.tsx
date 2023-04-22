@@ -133,7 +133,6 @@ function App() {
 									key={id} 
 									onClick={() => toggleTodo(id)} 
 									data-completed={completed}
-									style={{backgroundColor: completed ? "red" : "", cursor: "pointer"}}
 								>
 									<div className="todo-item">
 										<div className={`todo-status ${completed ? "complete" : ""}`}>

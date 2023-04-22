@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+[data-completed="true"] {
+    background-color: red;
+}
+
 .attribution { 
     font-size: 11px; 
     text-align: center;
