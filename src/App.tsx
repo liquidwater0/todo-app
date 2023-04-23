@@ -132,6 +132,7 @@ function App() {
 							<input 
 								className="add-todo-input" 
 								type="text" 
+								placeholder='Create a new todo...'
 								ref={inputRef}
 							/>
 						</div>

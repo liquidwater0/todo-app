@@ -63,6 +63,10 @@
                 color: var(--theme-4);
                 border: none;
 
+                &::placeholder {
+                    color: var(--theme-5);
+                }
+
                 &:focus {
                     outline: none;
                 }
