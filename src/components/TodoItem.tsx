@@ -1,15 +1,10 @@
-import { Todo } from "../App";
+import { Todo, useTodos } from "../context/TodoContext";
 import checkIcon from "../assets/icon-check.svg";
 import crossIcon from "../assets/icon-cross.svg";
 
-type TodoItemProps = {
-    todo: Todo,
-    toggleTodo: (id: string) => void,
-    deleteTodo: (id: string) => void
-}
-
-export default function TodoItem({ todo, toggleTodo, deleteTodo }: TodoItemProps) {
+export default function TodoItem({ todo }: { todo: Todo }) {
     const { label, completed, id } = todo;
+    const { toggleTodo, deleteTodo } = useTodos();
 
     return (
         <li 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from 'react';
 import "./scss/App.scss";
+import { useTodos } from './context/TodoContext';
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
@@ -11,42 +12,25 @@ import Attribution from './components/Attribution';
 /*
 	Fix toggling todo not working
 	Fix toggling todo resetting filter
+	Fix todos being deleted when adding a new todo
 	fix off center circle
 */
 
-export type Todo = {
-	label: string,
-	completed: boolean,
-	id: string
-}
-
-const initialTodos = [
-	{ label: "todo 1", completed: false, id: crypto.randomUUID() },
-	{ label: "todo 2", completed: true, id: crypto.randomUUID() },
-	{ label: "todo 3", completed: false, id: crypto.randomUUID() }
-];
-
 function App() {
 	const [theme, setTheme] = useState<string>("dark");
-	const [todos, setTodos] = useState<Todo[]>(initialTodos);
-	const [renderedTodos, setRenderedTodos] = useState<Todo[]>(todos);
-	const [currentFilter, setCurrentFilter] = useState<string>("all");
 	const inputRef = useRef<HTMLInputElement>(null!);
-
-	const itemsLeft = todos.filter(todo => !todo.completed).length;
+	const { 
+		renderedTodos, 
+		currentFilter, 
+		itemsLeft, 
+		addTodo, 
+		setCurrentFilter, 
+		clearCompletedTodos 
+	} = useTodos();
 
 	useEffect(() => {
 		document.documentElement.setAttribute("data-theme", theme);
 	}, [theme]);
-
-	useEffect(() => {
-		setRenderedTodos(todos);
-		setCurrentFilter("all");
-	}, [todos]);
-
-	useEffect(() => {
-		filterTodos();
-	}, [currentFilter]);
 
 	function handleTodoFormSubmit(event: FormEvent) {
 		event.preventDefault();
@@ -60,57 +44,6 @@ function App() {
 
 	function toggleTheme() {
 		setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark");
-	}
-
-	function addTodo(todoLabel: string) {
-		setTodos(prevTodos => {
-			return [
-				...prevTodos,
-				{ 
-					label: todoLabel, 
-					completed: false, 
-					id: crypto.randomUUID() 
-				}
-			];
-		});
-	}
-
-	function deleteTodo(id: string) {
-		setTodos(prevTodos => {
-			return [...prevTodos].filter(todo => todo.id !== id);
-		});
-	}
-
-	function toggleTodo(id: string) {
-		setTodos(prevTodos => {
-			const newTodos = [...prevTodos];
-			const todoById = newTodos.find(todo => todo.id === id);
-
-			if (!todoById) return newTodos;
-			todoById.completed = !todoById.completed;
-
-			return newTodos;
-		});
-	}
-
-	function filterTodos() {
-		setRenderedTodos(() => {
-			let newTodos = [...todos];
-
-			if (currentFilter === "all") {
-				newTodos = newTodos;
-			} else if (currentFilter === "active") {
-				newTodos = newTodos.filter(todo => !todo.completed);
-			} else if (currentFilter === "completed") {
-				newTodos = newTodos.filter(todo => todo.completed);
-			}
-
-			return newTodos;
-		});
-	}
-
-	function clearCompletedTodos() {
-		setTodos(prevTodos => prevTodos.filter(todo => !todo.completed));
 	}
 
 	return (
@@ -147,12 +80,7 @@ function App() {
 					<div className="todo-body">
 						<ul className='todo-list'>
 							{renderedTodos.map(todo => 
-								<TodoItem 
-									key={todo.id} 
-									todo={todo} 
-									toggleTodo={toggleTodo}
-									deleteTodo={deleteTodo}
-								/>
+								<TodoItem key={todo.id} todo={todo}/>
 							)}
 						</ul>
 
