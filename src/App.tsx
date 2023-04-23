@@ -5,6 +5,7 @@ import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
 
 import TodoItem from './components/TodoItem';
+import FilterButton from './components/FilterButton';
 import Attribution from './components/Attribution';
 
 /*
@@ -149,36 +150,29 @@ function App() {
 						<div className='todo-filtering'>
 							<div className="todos-left">{ itemsLeft } items left</div>
 							<div className='todo-filters'>
-								<button 
-									className={`filter-button ${currentFilter === "all" ? "active" : ""}`}
-									type="button" 
+								<FilterButton
+									active={currentFilter === "all"}
 									onClick={() => setCurrentFilter("all")}
 								>
 									All
-								</button>
-								<button 
-									className={`filter-button ${currentFilter === "active" ? "active" : ""}`}
-									type="button" 
+								</FilterButton>
+								<FilterButton
+									active={currentFilter === "active"}
 									onClick={() => setCurrentFilter("active")}
 								>
 									Active
-								</button>
-								<button 
-									className={`filter-button ${currentFilter === "completed" ? "active" : ""}`}
-									type="button" 
+								</FilterButton>
+								<FilterButton
+									active={currentFilter === "completed"}
 									onClick={() => setCurrentFilter("completed")}
 								>
 									Completed
-								</button>
+								</FilterButton>
 							</div>
 							<div>
-								<button 
-									className="filter-button"
-									type="button" 
-									onClick={clearCompletedTodos}
-								>
+								<FilterButton onClick={clearCompletedTodos}>
 									Clear Completed
-								</button>
+								</FilterButton>
 							</div>
 						</div>
 					</div>
