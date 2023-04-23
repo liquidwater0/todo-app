@@ -91,6 +91,14 @@
                 border-bottom: 1px solid var(--theme-6);
                 cursor: pointer;
 
+                .delete-todo-button {
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: auto;
+                    background-color: transparent;
+                }
+
                 &[data-completed="true"] {
                     text-decoration: line-through;
                     color: var(--theme-6);
@@ -102,6 +110,10 @@
                             display: none;
                         }
                     }
+                }
+
+                &:hover .delete-todo-button {
+                    display: flex;
                 }
             }
         }

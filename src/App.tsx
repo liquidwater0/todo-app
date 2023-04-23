@@ -75,6 +75,12 @@ function App() {
 		});
 	}
 
+	function deleteTodo(id: string) {
+		setTodos(prevTodos => {
+			return [...prevTodos].filter(todo => todo.id !== id);
+		});
+	}
+
 	function toggleTodo(id: string) {
 		setTodos(prevTodos => {
 			const newTodos = [...prevTodos];
@@ -145,6 +151,7 @@ function App() {
 									key={todo.id} 
 									todo={todo} 
 									toggleTodo={toggleTodo}
+									deleteTodo={deleteTodo}
 								/>
 							)}
 						</ul>
