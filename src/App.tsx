@@ -11,7 +11,7 @@ import Attribution from './components/Attribution';
 
 /*
 	Fix toggling todo not working
-	Fix todos being deleted when adding a new todo
+	pressing enter on input calls delete function on todo for some reason
 	fix off center circle
 */
 

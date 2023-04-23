@@ -68,9 +68,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 	}
 
 	function deleteTodo(id: string) {
-		setTodos(prevTodos => {
-			return [...prevTodos].filter(todo => todo.id !== id);
-		});
+		setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
 	}
 
 	function toggleTodo(id: string) {
