@@ -1,11 +1,68 @@
+@use "./todoForm.scss" as *;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-[data-completed="true"] {
-    background-color: red;
+:root {
+    --color-primary: hsl(220, 98%, 61%);
+    --check-background-color: linear-gradient(-45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    --app-padding: 1em 1.25em;
+}
+
+html[data-theme="dark"] {
+    --theme-1: hsl(235, 21%, 11%);
+    --theme-2: hsl(235, 24%, 19%);
+    --theme-3: hsl(234, 39%, 85%);
+    --theme-4: hsl(236, 33%, 92%);
+    --theme-5: hsl(234, 11%, 52%);
+    --theme-6: hsl(233, 14%, 35%);
+}
+
+html[data-theme="light"] {
+    --theme-1: hsl(236, 33%, 92%);
+    --theme-2: hsl(0, 0%, 98%);
+    --theme-3: hsl(233, 11%, 84%);
+    --theme-4: hsl(233, 14%, 35%);
+    --theme-5: hsl(235, 19%, 35%);
+    --theme-6: hsl(236, 9%, 61%);
+}
+
+body {
+    font-size: 18px;
+    color: var(--theme-4);
+    overflow: hidden;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+#root {
+    display: grid;
+    grid-template-rows: max-content auto;
+}
+
+.main-header {
+    background-color: purple;
+    height: 300px;
+}
+
+.main {
+    background-color: var(--theme-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .attribution { 

@@ -11,16 +11,15 @@ export default function TodoItem({ todo, toggleTodo }: TodoItemProps) {
 
     return (
         <li 
+            className="todo-item todo-section"
             onClick={() => toggleTodo(id)} 
             data-completed={completed}
         >
-            <div className="todo-item">
-                <div className={`todo-status ${completed ? "complete" : ""}`}>
-                    { completed && <img src={checkIcon} alt="check icon" /> }
-                </div>
-
-                <p className='todo-item-label'>{ label }</p>
+            <div className="status-circle">
+                { completed && <img src={checkIcon} alt="check icon" /> }
             </div>
+
+            <p className='todo-item-label'>{ label }</p>
         </li>
     );
 }

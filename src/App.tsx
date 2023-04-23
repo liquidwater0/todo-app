@@ -9,7 +9,7 @@ import Attribution from './components/Attribution';
 
 /*
 	Fix toggling todo not working
-	style
+	fix off center circle
 */
 
 export type Todo = {
@@ -125,8 +125,13 @@ function App() {
 								/>
 							</button>
 						</div>
-						<div className="todo-item">
-							<input type="text" ref={inputRef}/>
+						<div className="add-todo-container todo-section">
+							<div className="status-circle"/>
+							<input 
+								className="add-todo-input" 
+								type="text" 
+								ref={inputRef}
+							/>
 						</div>
 					</header>
 
@@ -144,18 +149,36 @@ function App() {
 						<div className='todo-filtering'>
 							<div className="todos-left">{ itemsLeft } items left</div>
 							<div className='todo-filters'>
-								<button type="button" onClick={() => setCurrentFilter("all")}>
+								<button 
+									className={`filter-button ${currentFilter === "all" ? "active" : ""}`}
+									type="button" 
+									onClick={() => setCurrentFilter("all")}
+								>
 									All
 								</button>
-								<button type="button" onClick={() => setCurrentFilter("active")}>
+								<button 
+									className={`filter-button ${currentFilter === "active" ? "active" : ""}`}
+									type="button" 
+									onClick={() => setCurrentFilter("active")}
+								>
 									Active
 								</button>
-								<button type="button" onClick={() => setCurrentFilter("completed")}>
+								<button 
+									className={`filter-button ${currentFilter === "completed" ? "active" : ""}`}
+									type="button" 
+									onClick={() => setCurrentFilter("completed")}
+								>
 									Completed
 								</button>
 							</div>
 							<div>
-								<button type="button" onClick={clearCompletedTodos}>Clear Completed</button>
+								<button 
+									className="filter-button"
+									type="button" 
+									onClick={clearCompletedTodos}
+								>
+									Clear Completed
+								</button>
 							</div>
 						</div>
 					</div>
