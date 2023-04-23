@@ -97,6 +97,10 @@
                     align-items: center;
                     margin-left: auto;
                     background-color: transparent;
+
+                    img {
+                        pointer-events: none;
+                    }
                 }
 
                 &[data-completed="true"] {
