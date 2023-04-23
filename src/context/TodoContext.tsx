@@ -47,7 +47,6 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
 		setRenderedTodos(todos);
-		// setCurrentFilter("all");
 	}, [todos]);
 
 	useEffect(() => {
@@ -65,6 +64,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 				}
 			];
 		});
+        setCurrentFilter("all");
 	}
 
 	function deleteTodo(id: string) {
