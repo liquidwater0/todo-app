@@ -11,7 +11,6 @@ import Attribution from './components/Attribution';
 
 /*
 	Fix toggling todo not working
-	Fix toggling todo resetting filter
 	Fix todos being deleted when adding a new todo
 	fix off center circle
 */
