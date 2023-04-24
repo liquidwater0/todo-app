@@ -30,6 +30,10 @@ function App() {
 		document.documentElement.setAttribute("data-theme", theme);
 	}, [theme]);
 
+	function toggleTheme() {
+		setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark");
+	}
+
 	function handleInputEnter(event: KeyboardEvent) {
 		if (event.key !== "Enter") return;
 		event.preventDefault();
@@ -40,10 +44,6 @@ function App() {
 
 		addTodo(inputValue);
 		inputRef.current.value = "";
-	}
-
-	function toggleTheme() {
-		setTheme(prevTheme => prevTheme === "dark" ? "light" : "dark");
 	}
 
 	return (
