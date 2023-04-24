@@ -74,13 +74,12 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
 	function toggleTodo(id: string) {
 		setTodos(prevTodos => {
-			const newTodos = [...prevTodos];
-			const todoById = newTodos.find(todo => todo.id === id);
-
-			if (!todoById) return newTodos;
-			todoById.completed = !todoById.completed;
-
-			return newTodos;
+			const updatedTodos = [...prevTodos].map(todo => {
+				if (todo.id === id) return { ...todo, completed: !todo.completed };
+				return todo;
+			});
+			
+			return updatedTodos;
 		});
 	}
 
