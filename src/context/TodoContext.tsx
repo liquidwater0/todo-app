@@ -47,6 +47,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
 		setRenderedTodos(todos);
+		filterTodos();
 	}, [todos]);
 
 	useEffect(() => {
