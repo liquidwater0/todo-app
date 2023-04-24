@@ -74,7 +74,7 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
 	function toggleTodo(id: string) {
 		setTodos(prevTodos => {
-			const updatedTodos = [...prevTodos].map(todo => {
+			const updatedTodos = prevTodos.map(todo => {
 				if (todo.id === id) return { ...todo, completed: !todo.completed };
 				return todo;
 			});
