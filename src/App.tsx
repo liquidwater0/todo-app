@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from 'react';
 import "./scss/App.scss";
 import { useTodos } from './context/TodoContext';
 
@@ -11,7 +11,6 @@ import Attribution from './components/Attribution';
 
 /*
 	Fix toggling todo not working
-	pressing enter on input calls delete function on todo for some reason
 	fix off center circle
 */
 
@@ -31,8 +30,10 @@ function App() {
 		document.documentElement.setAttribute("data-theme", theme);
 	}, [theme]);
 
-	function handleTodoFormSubmit(event: FormEvent) {
+	function handleInputEnter(event: KeyboardEvent) {
+		if (event.key !== "Enter") return;
 		event.preventDefault();
+
 		const inputValue = inputRef.current.value;
 
 		if (inputValue.trim() === "") return;
@@ -50,7 +51,7 @@ function App() {
 			<header className='main-header'></header>
 
 			<main className='main'>
-				<form className='todo-form' onSubmit={handleTodoFormSubmit}>
+				<form className='todo-form' onSubmit={(event: FormEvent) => event.preventDefault()}>
 					<header className="todo-header">
 						<div>
 							<h1>TODO</h1>
@@ -71,6 +72,7 @@ function App() {
 								className="add-todo-input" 
 								type="text" 
 								placeholder='Create a new todo...'
+								onKeyDown={handleInputEnter}
 								ref={inputRef}
 							/>
 						</div>
