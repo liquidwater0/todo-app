@@ -32,14 +32,8 @@ export function useTodos() {
     return useContext(TodoContext);
 }
 
-const initialTodos = [
-	{ label: "todo 1", completed: false, id: crypto.randomUUID() },
-	{ label: "todo 2", completed: true, id: crypto.randomUUID() },
-	{ label: "todo 3", completed: false, id: crypto.randomUUID() }
-];
-
 export default function TodoProvider({ children }: { children: ReactNode }) {
-    const [todos, setTodos] = useState<Todo[]>(initialTodos);
+    const [todos, setTodos] = useState<Todo[]>([]);
 	const [renderedTodos, setRenderedTodos] = useState<Todo[]>(todos);
 	const [currentFilter, setCurrentFilter] = useState<string>("all");
 
