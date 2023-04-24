@@ -4,6 +4,8 @@ import { useTodos } from './context/TodoContext';
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
+import headerDesktopDark from "./assets/bg-desktop-dark.jpg";
+import headerDesktopLight from "./assets/bg-desktop-light.jpg";
 
 import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
@@ -43,7 +45,12 @@ function App() {
 
 	return (
     	<>
-			<header className='main-header'></header>
+			<header className='main-header'>
+				<img 
+					src={theme === "dark" ? headerDesktopDark : headerDesktopLight} 
+					alt="header image" 
+				/>
+			</header>
 
 			<main className='main'>
 				<form className='todo-form' onSubmit={(event: FormEvent) => event.preventDefault()}>
