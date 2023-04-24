@@ -11,7 +11,6 @@ import Attribution from './components/Attribution';
 
 /*
 	Fix toggling todo not working
-	fix off center circle
 */
 
 function App() {

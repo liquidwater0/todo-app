@@ -1,5 +1,6 @@
 .todo-form {
     --status-circle-size: 25px;
+    --status-circle-thickness: 5px;
 
     width: 500px;
     transform: translateY(-200px);
@@ -24,12 +25,20 @@
         border-radius: 100%;
         margin-right: 1.25em;
         background-color: var(--theme-6);
+        aspect-ratio: 1 / 1;
 
         &::after {
             content: "";
             position: absolute;
-            width: calc(var(--status-circle-size) - 5px);
-            height: calc(var(--status-circle-size) - 5px);
+            left: var(--status-circle-thickness);
+            top: var(--status-circle-thickness);
+            transform: translate(
+                calc(-1 * var(--status-circle-thickness) / 2), 
+                calc(-1 * var(--status-circle-thickness) / 2)
+            );
+            width: calc(var(--status-circle-size) - var(--status-circle-thickness));
+            height: calc(var(--status-circle-size) - var(--status-circle-thickness));
+            aspect-ratio: 1 / 1;
 
             background-color: var(--theme-2);
             border-radius: 100%;
