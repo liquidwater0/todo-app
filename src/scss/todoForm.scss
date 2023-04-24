@@ -94,6 +94,8 @@
         border-radius: 0.35rem;
 
         .todo-list {
+            max-height: 550px;
+            overflow-y: auto;
             list-style: none;
     
             .todo-item {
