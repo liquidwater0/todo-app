@@ -15,8 +15,6 @@ import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
 import Attribution from './components/Attribution';
 
-//Make accessible
-
 export const STORAGE_KEY = "todo-app";
 
 function App() {
@@ -70,6 +68,7 @@ function App() {
 								className='theme-changer-button'
 								type="button" 
 								onClick={toggleTheme}
+								aria-label='theme changer button'
 							>
 								<img 
 									src={theme === "dark" ? sunIcon : moonIcon} 
@@ -102,24 +101,30 @@ function App() {
 								<FilterButton
 									active={currentFilter === "all"}
 									onClick={() => setCurrentFilter("all")}
+									aria-label='filter all'
 								>
 									All
 								</FilterButton>
 								<FilterButton
 									active={currentFilter === "active"}
 									onClick={() => setCurrentFilter("active")}
+									aria-label='filter active'
 								>
 									Active
 								</FilterButton>
 								<FilterButton
 									active={currentFilter === "completed"}
 									onClick={() => setCurrentFilter("completed")}
+									aria-label='filter completed'
 								>
 									Completed
 								</FilterButton>
 							</div>
 							<div>
-								<FilterButton onClick={clearCompletedTodos}>
+								<FilterButton 
+									onClick={clearCompletedTodos}
+									aria-label='clear completed'
+								>
 									Clear Completed
 								</FilterButton>
 							</div>

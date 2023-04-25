@@ -82,6 +82,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
     return (
         <li 
             className="todo-item todo-section"
+            aria-label={`${completed ? "completed" : "not completed"} todo`}
             data-completed={completed}
             onClick={() => toggleTodo(id)}
             onDragOver={handleDragOver}
@@ -99,16 +100,26 @@ export default function TodoItem({ todo }: { todo: Todo }) {
                 {
                     navigator.maxTouchPoints > 0 &&
                     <div className="arrange-buttons">
-                        <button onClick={handleArrangeUp}>
+                        <button 
+                            onClick={handleArrangeUp} 
+                            aria-label={`move todo ${label} up`}
+                        >
                             <KeyboardArrowUp/>
                         </button>
-                        <button onClick={handleArrangeDown}>
+                        <button 
+                            onClick={handleArrangeDown} 
+                            aria-label={`move todo ${label} down`}
+                        >
                             <KeyboardArrowDown/>
                         </button>
                     </div>
                 }
 
-                <button className="delete-todo-button" onClick={() => deleteTodo(id)}>
+                <button 
+                    className="delete-todo-button" 
+                    onClick={() => deleteTodo(id)}
+                    aria-label={`delete todo ${label}`}
+                >
                     <img src={crossIcon} alt="cross icon" />
                 </button>
             </div>
