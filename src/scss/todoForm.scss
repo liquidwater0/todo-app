@@ -103,6 +103,12 @@
                 border-bottom: 1px solid var(--theme-6);
                 cursor: pointer;
 
+                .todo-item-label {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
                 .delete-todo-button {
                     display: none;
                     justify-content: center;
