@@ -4,8 +4,11 @@ import { useTodos } from './context/TodoContext';
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
+
 import headerDesktopDark from "./assets/bg-desktop-dark.jpg";
 import headerDesktopLight from "./assets/bg-desktop-light.jpg";
+import headerMobileDark from "./assets/bg-mobile-dark.jpg";
+import headerMobileLight from "./assets/bg-mobile-light.jpg";
 
 import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
@@ -46,10 +49,11 @@ function App() {
 	return (
     	<>
 			<header className='main-header'>
-				<img 
-					src={theme === "dark" ? headerDesktopDark : headerDesktopLight} 
-					alt="header image" 
-				/>
+				<picture>
+					<source media='(max-width: 800px)' srcSet={`${theme === "dark" ? headerMobileDark : headerMobileLight}`}/>
+					<source media='(min-width: 1024px)' srcSet={`${theme === "dark" ? headerDesktopDark : headerDesktopLight}`}/>
+					<img src={`${theme === "dark" ? headerDesktopDark : headerDesktopLight}`} alt="header image" />
+				</picture>
 			</header>
 
 			<main className='main'>
