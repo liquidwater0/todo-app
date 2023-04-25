@@ -41,6 +41,10 @@ html {
         background-image: var(--color-gradient);
         border-radius: 1000px;
     }
+
+    :focus {
+        border: 2px dashed var(--color-primary) !important;
+    }
 }
 
 body {

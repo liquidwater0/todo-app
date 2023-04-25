@@ -1,4 +1,4 @@
-import { DragEvent } from "react";
+import { DragEvent, KeyboardEvent } from "react";
 import { Todo, useTodos } from "../context/TodoContext";
 import checkIcon from "../assets/icon-check.svg";
 import crossIcon from "../assets/icon-cross.svg";
@@ -7,6 +7,10 @@ import { KeyboardArrowUp, KeyboardArrowDown } from "@mui/icons-material";
 export default function TodoItem({ todo }: { todo: Todo }) {
     const { label, completed, id } = todo;
     const { todos, setTodos, toggleTodo, deleteTodo } = useTodos();
+
+    function handleToggleTodo() {
+        toggleTodo(id)
+    }
 
     function handleDragOver(event: DragEvent) {
         event.preventDefault();
@@ -84,9 +88,11 @@ export default function TodoItem({ todo }: { todo: Todo }) {
             className="todo-item todo-section"
             aria-label={`${completed ? "completed" : "not completed"} todo`}
             data-completed={completed}
-            onClick={() => toggleTodo(id)}
+            onClick={handleToggleTodo}
+            onKeyDown={(event: KeyboardEvent) => event.key === "Enter" && handleToggleTodo()}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
+            tabIndex={1}
             draggable
         >
             <div className="status-circle">
@@ -119,6 +125,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
                     className="delete-todo-button" 
                     onClick={() => deleteTodo(id)}
                     aria-label={`delete todo ${label}`}
+                    tabIndex={2}
                 >
                     <img src={crossIcon} alt="cross icon" />
                 </button>

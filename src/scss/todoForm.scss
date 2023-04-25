@@ -57,6 +57,7 @@
             background-color: transparent;
             width: 35px;
             height: 35px;
+            border-radius: 100%;
         }
 
         .add-todo-container {
@@ -155,7 +156,8 @@
                     }
                 }
 
-                &:hover .delete-todo-button {
+                &:hover .delete-todo-button,
+                &:focus .delete-todo-button {
                     display: flex;
                 }
             }
