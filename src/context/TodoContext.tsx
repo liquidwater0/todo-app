@@ -61,7 +61,6 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 					label: todoLabel, 
 					completed: false, 
 					id: crypto.randomUUID(),
-					dragging: false,
 					draggedOver: false
 				}
 			];
