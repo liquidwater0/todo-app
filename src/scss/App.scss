@@ -32,10 +32,21 @@ html[data-theme="light"] {
     --theme-6: hsl(236, 9%, 61%);
 }
 
+html {
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-image: var(--check-background-color);
+        border-radius: 1000px;
+    }
+}
+
 body {
     font-size: 18px;
+    background-color: var(--theme-1);
     color: var(--theme-4);
-    overflow: hidden;
 }
 
 html, body, #root {
@@ -50,7 +61,7 @@ button {
 
 #root {
     display: grid;
-    grid-template-rows: max-content auto;
+    grid-template-rows: min-content auto min-content;
 }
 
 .main-header {
@@ -64,10 +75,20 @@ button {
 }
 
 .main {
-    background-color: var(--theme-1);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5rem;
+
+    p {
+        color: var(--theme-6);
+    }
 }
 
 .attribution { 

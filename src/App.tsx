@@ -14,6 +14,7 @@ import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
 import Attribution from './components/Attribution';
 
+//make drag drop work on mobile
 //Make accessible
 
 function App() {
@@ -124,6 +125,10 @@ function App() {
 					</div>
 				</form>
 			</main>
+
+			<footer className='main-footer'>
+				<p>Drag and drop to reorder list</p>
+			</footer>
 
 			{/* <Attribution/> */}
     	</>
