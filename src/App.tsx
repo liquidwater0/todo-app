@@ -14,6 +14,8 @@ import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
 import Attribution from './components/Attribution';
 
+//Make accessible
+
 function App() {
 	const [theme, setTheme] = useState<string>("dark");
 	const inputRef = useRef<HTMLInputElement>(null!);

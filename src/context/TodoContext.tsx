@@ -12,12 +12,17 @@ export type Todo = {
 	label: string,
 	completed: boolean,
 	id: string
+
+	//all i can think of for drag and drop in react
+	draggedOver: boolean
 }
 
 type TodoContextType = {
+	todos: Todo[],
     renderedTodos: Todo[],
     currentFilter: string,
     itemsLeft: number,
+    setTodos: Dispatch<SetStateAction<Todo[]>>,
     setCurrentFilter: Dispatch<SetStateAction<string>>,
     addTodo: (todoLabel: string) => void,
     deleteTodo: (id: string) => void,
@@ -55,7 +60,9 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 				{ 
 					label: todoLabel, 
 					completed: false, 
-					id: crypto.randomUUID() 
+					id: crypto.randomUUID(),
+					dragging: false,
+					draggedOver: false
 				}
 			];
 		});
@@ -99,9 +106,11 @@ export default function TodoProvider({ children }: { children: ReactNode }) {
 
     return (
         <TodoContext.Provider value={{ 
+			todos,
             renderedTodos, 
             currentFilter,
             itemsLeft, 
+			setTodos,
             setCurrentFilter, 
             addTodo, 
             deleteTodo, 
