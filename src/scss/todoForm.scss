@@ -99,6 +99,7 @@
             list-style: none;
     
             .todo-item {
+                position: relative;
                 border-bottom: 1px solid var(--theme-6);
                 cursor: pointer;
 
@@ -111,6 +112,22 @@
 
                     img {
                         pointer-events: none;
+                    }
+                }
+
+                .arrange-buttons {
+                    display: flex;
+                    gap: 10px;
+                    position: absolute;
+                    right: 65px;
+
+                    button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: transparent;
+                        color: var(--theme-5);
+                        aspect-ratio: 1 / 1;
                     }
                 }
 

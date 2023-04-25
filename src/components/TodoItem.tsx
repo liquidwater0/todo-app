@@ -2,6 +2,7 @@ import { DragEvent } from "react";
 import { Todo, useTodos } from "../context/TodoContext";
 import checkIcon from "../assets/icon-check.svg";
 import crossIcon from "../assets/icon-cross.svg";
+import { KeyboardArrowUp, KeyboardArrowDown } from "@mui/icons-material";
 
 export default function TodoItem({ todo }: { todo: Todo }) {
     const { label, completed, id } = todo;
@@ -38,11 +39,51 @@ export default function TodoItem({ todo }: { todo: Todo }) {
         });
     }
 
+    function handleArrangeUp() {
+        const currentTodo = todos.find(todo => todo.id === id);
+
+        if (!currentTodo) return;
+
+        const currentTodoIndex = todos.indexOf(currentTodo);
+        const nextTodoIndex = currentTodoIndex - 1;
+        const nextTodo = todos[nextTodoIndex];
+
+        if (nextTodoIndex < 0) return;
+
+        setTodos(prevTodos => {
+            return prevTodos.map(todo => {
+                if (todo.id === currentTodo.id) return nextTodo;
+                if (todo.id === nextTodo.id) return currentTodo;
+                return todo;
+            });
+        });
+    }
+
+    function handleArrangeDown() {
+        const currentTodo = todos.find(todo => todo.id === id);
+
+        if (!currentTodo) return;
+
+        const currentTodoIndex = todos.indexOf(currentTodo);
+        const nextTodoIndex = currentTodoIndex + 1;
+        const nextTodo = todos[nextTodoIndex];
+
+        if (nextTodoIndex > todos.length - 1) return;
+
+        setTodos(prevTodos => {
+            return prevTodos.map(todo => {
+                if (todo.id === currentTodo.id) return nextTodo;
+                if (todo.id === nextTodo.id) return currentTodo;
+                return todo;
+            });
+        });
+    }
+
     return (
         <li 
             className="todo-item todo-section"
             data-completed={completed}
-            onClick={() => toggleTodo(id)} 
+            onClick={() => toggleTodo(id)}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
             draggable
@@ -52,6 +93,19 @@ export default function TodoItem({ todo }: { todo: Todo }) {
             </div>
 
             <p className='todo-item-label'>{ label }</p>
+
+            {/* The list scrolls, so this may be the only solution for drag/drop on mobile */}
+            {
+                navigator.maxTouchPoints > 0 &&
+                <div className="arrange-buttons">
+                    <button onClick={handleArrangeUp}>
+                        <KeyboardArrowUp/>
+                    </button>
+                    <button onClick={handleArrangeDown}>
+                        <KeyboardArrowDown/>
+                    </button>
+                </div>
+            }
 
             <button className="delete-todo-button" onClick={() => deleteTodo(id)}>
                 <img src={crossIcon} alt="cross icon" />

@@ -15,7 +15,6 @@ import TodoItem from './components/TodoItem';
 import FilterButton from './components/FilterButton';
 import Attribution from './components/Attribution';
 
-//make drag drop work on mobile
 //Make accessible
 
 export const STORAGE_KEY = "todo-app";
