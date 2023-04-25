@@ -42,7 +42,7 @@ html {
         border-radius: 1000px;
     }
 
-    :focus {
+    :not(input):focus-visible {
         border: 2px dashed var(--color-primary) !important;
     }
 }
