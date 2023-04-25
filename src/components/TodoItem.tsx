@@ -94,22 +94,24 @@ export default function TodoItem({ todo }: { todo: Todo }) {
 
             <p className='todo-item-label'>{ label }</p>
 
-            {/* The list scrolls, so this may be the only solution for drag/drop on mobile */}
-            {
-                navigator.maxTouchPoints > 0 &&
-                <div className="arrange-buttons">
-                    <button onClick={handleArrangeUp}>
-                        <KeyboardArrowUp/>
-                    </button>
-                    <button onClick={handleArrangeDown}>
-                        <KeyboardArrowDown/>
-                    </button>
-                </div>
-            }
+            <div className="todo-item-side-buttons">
+                {/* The list scrolls, so this may be the only solution for drag/drop on mobile */}
+                {
+                    navigator.maxTouchPoints > 0 &&
+                    <div className="arrange-buttons">
+                        <button onClick={handleArrangeUp}>
+                            <KeyboardArrowUp/>
+                        </button>
+                        <button onClick={handleArrangeDown}>
+                            <KeyboardArrowDown/>
+                        </button>
+                    </div>
+                }
 
-            <button className="delete-todo-button" onClick={() => deleteTodo(id)}>
-                <img src={crossIcon} alt="cross icon" />
-            </button>
+                <button className="delete-todo-button" onClick={() => deleteTodo(id)}>
+                    <img src={crossIcon} alt="cross icon" />
+                </button>
+            </div>
         </li>
     );
 }
