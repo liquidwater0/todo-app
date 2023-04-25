@@ -92,10 +92,19 @@ button {
 }
 
 .attribution { 
-    font-size: 11px; 
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+    font-size: 15px; 
     text-align: center;
+    background-color: var(--theme-1);
+    width: 100%;
+    padding: 10px;
 
     a {
-        color: hsl(228, 45%, 44%);
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 700;
     }
 }

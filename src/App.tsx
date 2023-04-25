@@ -137,7 +137,7 @@ function App() {
 				<p>Drag and drop to reorder list</p>
 			</footer>
 
-			{/* <Attribution/> */}
+			<Attribution/>
     	</>
   	);
 }
