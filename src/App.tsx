@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from 'react';
+import { useEffect, useRef, FormEvent, KeyboardEvent } from 'react';
 import "./scss/App.scss";
 import { useTodos } from './context/TodoContext';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 import sunIcon from "./assets/icon-sun.svg";
 import moonIcon from "./assets/icon-moon.svg";
@@ -17,8 +18,10 @@ import Attribution from './components/Attribution';
 //make drag drop work on mobile
 //Make accessible
 
+export const STORAGE_KEY = "todo-app";
+
 function App() {
-	const [theme, setTheme] = useState<string>("dark");
+	const [theme, setTheme] = useLocalStorage<string>(`${STORAGE_KEY}-theme`, "dark");
 	const inputRef = useRef<HTMLInputElement>(null!);
 	const { 
 		renderedTodos, 
