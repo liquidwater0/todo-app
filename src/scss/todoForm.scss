@@ -11,7 +11,7 @@
         padding: var(--app-padding);
 
         &:hover .status-circle {
-            background-image: var(--check-background-color);
+            background-image: var(--color-gradient);
         }
     }
 
@@ -119,7 +119,7 @@
                     color: var(--theme-6);
 
                     .status-circle {
-                        background-image: var(--check-background-color);
+                        background-image: var(--color-gradient);
 
                         &::after {
                             display: none;

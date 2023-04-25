@@ -10,7 +10,7 @@
 
 :root {
     --color-primary: hsl(220, 98%, 61%);
-    --check-background-color: linear-gradient(-45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    --color-gradient: linear-gradient(-45deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
     --app-padding: 1em 1.25em;
 }
 
@@ -38,7 +38,7 @@ html {
     }
 
     ::-webkit-scrollbar-thumb {
-        background-image: var(--check-background-color);
+        background-image: var(--color-gradient);
         border-radius: 1000px;
     }
 }
