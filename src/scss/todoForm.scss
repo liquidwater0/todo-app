@@ -97,6 +97,15 @@
             max-height: 550px;
             overflow-y: auto;
             list-style: none;
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-image: var(--check-background-color);
+                border-radius: 1000px;
+            }
     
             .todo-item {
                 border-bottom: 1px solid var(--theme-6);
