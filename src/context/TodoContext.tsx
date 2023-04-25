@@ -7,6 +7,8 @@ import {
     SetStateAction, 
     Dispatch 
 } from 'react';
+import { STORAGE_KEY } from '../App';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export type Todo = {
 	label: string,
@@ -38,7 +40,7 @@ export function useTodos() {
 }
 
 export default function TodoProvider({ children }: { children: ReactNode }) {
-    const [todos, setTodos] = useState<Todo[]>([]);
+    const [todos, setTodos] = useLocalStorage<Todo[]>(`${STORAGE_KEY}-todos`, []);
 	const [renderedTodos, setRenderedTodos] = useState<Todo[]>(todos);
 	const [currentFilter, setCurrentFilter] = useState<string>("all");
 
